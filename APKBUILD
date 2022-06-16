@@ -24,11 +24,8 @@ build() {
         python3 setup.py build
 }
 
-check() {
-        python3 runtests.py -j${JOBS:-$(nproc)}
-}
-
 package() {
+        cd ./src
         python3 setup.py install --prefix=/usr --root="/home/appuser/src/"
 
         install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/cython/license"

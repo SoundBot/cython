@@ -11,7 +11,7 @@ license="Apache-2.0"
 makedepends="py3-setuptools python3-dev"
 depends="python3"
 subpackages="cython-doc"
-source="cython-$pkgver.tar.gz::https://github.com/cython/cython/archive/afc00fc3ba5d43c67151c0039847a526e7b627a5.tar.gz"
+source="cython-$pkgver.tar.gz::cython-$pkgver.tar.gz"
 
 # compatible fix for removing dev subpkg from apkbuild
 # cython is not a library but a compiler and does not need a dev subpackage

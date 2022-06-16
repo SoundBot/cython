@@ -14,7 +14,7 @@ RUN abuild-keygen -a -i -n
 
 RUN wget https://git.alpinelinux.org/aports/plain/main/cython/APKBUILD
 RUN wget https://git.alpinelinux.org/aports/plain/main/cython/cython-test-fix.patch
-
+RUN wget https://github.com/cython/cython/commit/0f7bd0d1b159d085f321cc32a3f6ade24844e545.patch
 
 # RUN abuild deps
 # RUN abuild unpack

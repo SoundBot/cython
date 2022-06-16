@@ -2,7 +2,7 @@
 # Contributor: Oleg Titov <oleg.titov@gmail.com>
 # Maintainer: Stuart Cardall <developer@it-offshore.co.uk>
 pkgname=cython
-pkgver=0.29.24
+pkgver=afc00fc3ba5d43c67151c0039847a526e7b627a5
 pkgrel=0
 pkgdesc="Cython is an optimising static compiler for both the Python & the extended Cython programming languages."
 url="https://cython.org/"

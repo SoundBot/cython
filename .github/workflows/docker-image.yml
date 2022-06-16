@@ -25,4 +25,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: cython-0.29.24-r0.apk
-        path: /apkout/cython-0.29.24-r0.apk
+        path: ${{ github.workspace }}/apkout/cython-0.29.24-r0.apk

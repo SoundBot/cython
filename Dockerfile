@@ -21,4 +21,4 @@ RUN wget https://github.com/cython/cython/commit/0f7bd0d1b159d085f321cc32a3f6ade
 # RUN abuild prepare
 # RUN abuild -r package
 
-RUN abuild -r
+RUN abuild checksum && abuild -r

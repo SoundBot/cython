@@ -2,7 +2,7 @@
 # Contributor: Oleg Titov <oleg.titov@gmail.com>
 # Maintainer: Stuart Cardall <developer@it-offshore.co.uk>
 pkgname=cython
-pkgver=afc00fc3ba5d43c67151c0039847a526e7b627a5
+pkgver=0.29.24
 pkgrel=0
 pkgdesc="Cython is an optimising static compiler for both the Python & the extended Cython programming languages."
 url="https://cython.org/"
@@ -26,6 +26,7 @@ check() {
 }
 
 package() {
+	ls
 	python3 setup.py install --prefix=/usr --root="$pkgdir"
 
 	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/cython/license"

@@ -1,0 +1,68 @@
+From 0f7bd0d1b159d085f321cc32a3f6ade24844e545 Mon Sep 17 00:00:00 2001
+From: Thomas A Caswell <tcaswell@gmail.com>
+Date: Sun, 31 Oct 2021 05:11:09 -0400
+Subject: [PATCH] Change C includes of "longintrepr.h" to account for upstream
+ changes (GH-4428)
+
+See https://github.com/python/cpython/pull/28968/8e5de40f90476249e9a2e5ef135143b5c6a0b512
+which is part of implementing
+https://bugs.python.org/issue35134
+moved the header "longintrepr.h" into a sub-folder.
+The notes on this change suggested to include "Python.h" instead.
+---
+ Cython/Includes/cpython/longintrepr.pxd | 8 ++++++--
+ Cython/Utility/ModuleSetupCode.c        | 4 +++-
+ tests/compile/pylong.pyx                | 7 ++++++-
+ 3 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/Cython/Includes/cpython/longintrepr.pxd b/Cython/Includes/cpython/longintrepr.pxd
+index 45fe81e6cd..c38c1bff88 100644
+--- a/Cython/Includes/cpython/longintrepr.pxd
++++ b/Cython/Includes/cpython/longintrepr.pxd
+@@ -1,7 +1,11 @@
+ # Internals of the "long" type (Python 2) or "int" type (Python 3).
+-# This is not part of Python's published API.
+ 
+-cdef extern from "longintrepr.h":
++cdef extern from "Python.h":
++    """
++    #if PY_MAJOR_VERSION < 3
++     #include "longintrepr.h"
++    #endif
++    """
+     ctypedef unsigned int digit
+     ctypedef int sdigit  # Python >= 2.7 only
+ 
+diff --git a/Cython/Utility/ModuleSetupCode.c b/Cython/Utility/ModuleSetupCode.c
+index 01c63eac29..ce542ba1a8 100644
+--- a/Cython/Utility/ModuleSetupCode.c
++++ b/Cython/Utility/ModuleSetupCode.c
+@@ -200,7 +200,9 @@
+ #endif
+ 
+ #if CYTHON_USE_PYLONG_INTERNALS
+-  #include "longintrepr.h"
++  #if PY_MAJOR_VERSION < 3
++    #include "longintrepr.h"
++  #endif
+   /* These short defines can easily conflict with other code */
+   #undef SHIFT
+   #undef BASE
+diff --git a/tests/compile/pylong.pyx b/tests/compile/pylong.pyx
+index f4938fab9f..0daef8d4d7 100644
+--- a/tests/compile/pylong.pyx
++++ b/tests/compile/pylong.pyx
+@@ -8,7 +8,12 @@ cdef extern from "Python.h":
+         Py_ssize_t ob_refcnt
+         PyTypeObject *ob_type
+ 
+-cdef extern from "longintrepr.h":
++cdef extern from "Python.h":
++    """
++    #if PY_MAJOR_VERSION < 3
++     #include "longintrepr.h"
++    #endif
++    """
+     cdef struct _longobject:
+         int ob_refcnt
+         PyTypeObject *ob_type

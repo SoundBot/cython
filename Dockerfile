@@ -12,8 +12,8 @@ WORKDIR /home/appuser
 
 RUN abuild-keygen -a -i -n
 
-RUN wget https://git.alpinelinux.org/aports/plain/main/cython/APKBUILD?h=3.15-stable
-RUN wget https://git.alpinelinux.org/aports/plain/main/cython/cython-test-fix.patch?h=3.15-stable
+RUN wget https://git.alpinelinux.org/aports/plain/main/cython/APKBUILD
+RUN wget https://git.alpinelinux.org/aports/plain/main/cython/cython-test-fix.patch
 
 
 # RUN abuild deps

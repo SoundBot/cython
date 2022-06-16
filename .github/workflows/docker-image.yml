@@ -15,4 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)  
+    - name: Copy generated apk
+      uses: actions/upload-artifact@v2
+      with:
+        name: cython-0.29.24-r0.apk
+        path: /home/appuser/packages/home/x86_64/cython-0.29.24-r0.apk

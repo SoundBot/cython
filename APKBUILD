@@ -4,7 +4,7 @@
 pkgname=cython
 pkgver=0.29.24
 pkgrel=0
-pkgdesc="Cython is an optimising static compiler for both the Python & the extended
+pkgdesc="Cython is an optimising static compiler for both the Python & the extended"
 url="https://cython.org/"
 arch="all"
 license="Apache-2.0"
@@ -12,7 +12,7 @@ makedepends="py3-setuptools python3-dev"
 depends="python3"
 subpackages="cython-doc"
 com="9341e73aceface39dd7b48bf46b3f376cde33296"
-source="cython-$pkgver.tar.gz::https://github.com/cython/cython/archive/$com.tar.gz
+source="cython-$pkgver.tar.gz::https://github.com/cython/cython/archive/$com.tar.gz"
 
 # compatible fix for removing dev subpkg from apkbuild
 # cython is not a library but a compiler and does not need a dev subpackage
@@ -20,7 +20,7 @@ provides=cython-dev
 
 build() {
         ls
-        cp -r ./cython-$com/* .
+        cp -r ./cython-9341e73aceface39dd7b48bf46b3f376cde33296/* .
         python3 setup.py build
 }
 

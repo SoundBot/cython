@@ -15,7 +15,6 @@ RUN abuild-keygen -a -i -n
 RUN wget https://git.alpinelinux.org/aports/plain/main/cython/cython-test-fix.patch
 ADD longintrepr.patch longintrepr.patch
 ADD APKBUILD APKBUILD
-RUN git apply longintrepr.patch
 
 # RUN abuild deps
 # RUN abuild unpack
